@@ -1,253 +1,203 @@
-# CMS DocuFrontend
+# DocuCMS - Content and Project Management System
 
-Un sistema de gestión de contenido (CMS) moderno construido con React, TypeScript y Vite, diseñado para administrar contenido, proyectos, categorías y documentación de manera eficiente.
+A modern React/TypeScript-based Content Management System (CMS) with project management capabilities, built with Vite and Bootstrap.
 
-## 🚀 Características Principales
+## 🚀 Features
 
-### 📝 Gestión de Contenido
-- **Crear, editar, ver y eliminar contenido** con editor de texto enriquecido TinyMCE
-- **Categorías y subcategorías** con sistema de prioridades
-- **Etiquetas y estados** (borrador, publicado, archivado)
-- **Sistema de prioridades** para ordenamiento inteligente
-- **Historial de cambios** con seguimiento de modificaciones
+### Content Management
+- **Create, Edit, Delete** content with rich text editor (TinyMCE)
+- **Category and Subcategory** organization
+- **Priority-based** content ranking (1-100 scale)
+- **Status management** (Draft, Published, Archived)
+- **Tag-based** content organization
+- **Author tracking** and content history
 
-### 📁 Gestión de Proyectos
-- **Crear y gestionar proyectos** con descripción, objetivos y conclusiones
-- **Estados de proyecto** configurables (en progreso, completado, etc.)
-- **Áreas de proyecto** para organización por departamentos
-- **Sistema de prioridades** para proyectos
-- **Editor de texto enriquecido** para descripciones y objetivos
-- **Filtros y búsqueda** avanzada de proyectos
+### Project Management
+- **Project creation** and management
+- **Status and Area** categorization
+- **Priority-based** project ranking
+- **Rich text descriptions** and objectives
+- **Project history** tracking
 
-### 👥 Sistema de Autenticación
-- **Login con email y contraseña**
-- **Roles de usuario** (admin, creator)
-- **JWT tokens** para autenticación segura
-- **Gestión de sesiones** automática
-- **Administración de usuarios** (solo para admins)
-  - Crear, editar y eliminar usuarios
-  - Asignar roles (admin, creator)
-  - Gestión de contraseñas
+### User Management
+- **Role-based access control** (Admin, Creator)
+- **User authentication** with JWT tokens
+- **User registration** and management (Admin only)
 
-### 📚 Documentación
-- **Visualización de contenido** organizado por categorías
-- **Navegación lateral** con lista de títulos
-- **Contenido enriquecido** con formato HTML
-- **Responsive design** para todos los dispositivos
+### Technical Features
+- **Modern React 18** with TypeScript
+- **Vite** for fast development and building
+- **Bootstrap 5** for responsive UI
+- **JWT Authentication** with secure token management
+- **API integration** with RESTful backend
+- **Real-time form validation**
+- **Responsive design** for all devices
 
-## 🛠️ Tecnologías Utilizadas
+## 🛠️ Technology Stack
 
-- **Frontend**: React 18 + TypeScript
+- **Frontend**: React 18, TypeScript, Vite
+- **UI Framework**: Bootstrap 5, Bootstrap Icons
+- **Rich Text Editor**: TinyMCE
+- **Authentication**: JWT Bearer Tokens
+- **State Management**: React Hooks
+- **HTTP Client**: Fetch API with interceptors
 - **Build Tool**: Vite
-- **UI Framework**: Bootstrap 5 + Bootstrap Icons
-- **Editor de Texto**: TinyMCE 6
-- **Estado**: React Hooks
-- **HTTP Client**: Fetch API con interceptores
-- **Autenticación**: JWT tokens
+- **Package Manager**: npm
 
-## 📦 Instalación
+## 📋 Prerequisites
 
-1. **Clonar el repositorio**
+- Node.js (version 16 or higher)
+- npm (comes with Node.js)
+- A backend API server (see API Configuration)
+
+## 🚀 Installation
+
+1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd docu-frontend
+   git clone https://github.com/jaraiza1983/docucms.git
+   cd docucms
    ```
 
-2. **Instalar dependencias**
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-3. **Configurar variables de entorno**
-   ```bash
-   # Crear archivo .env.local
+3. **Configure environment variables**
+   Create a `.env` file in the root directory:
+   ```env
    VITE_API_BASE_URL=http://localhost:3000/api
-   VITE_TINYMCE_API_KEY=your-tinymce-api-key
    ```
 
-4. **Ejecutar en desarrollo**
+4. **Start the development server**
    ```bash
    npm run dev
    ```
 
-5. **Construir para producción**
-   ```bash
-   npm run build
-   ```
+5. **Open your browser**
+   Navigate to `http://localhost:5173`
 
-## 🔧 Configuración
+## 🔧 Configuration
 
-### API Backend
-El frontend se conecta a un backend API que debe estar ejecutándose en `http://localhost:3000/api`. El backend debe proporcionar los siguientes endpoints:
+### API Configuration
+The application expects a backend API server. Update the API base URL in:
+- `src/config/api.ts` - API endpoints configuration
+- `.env` file - Environment variables
 
-#### Autenticación
-- `POST /auth/login` - Iniciar sesión
-- `POST /auth/register` - Registrar usuario
+### Backend Requirements
+The backend should implement the API specification defined in `api-spec-new.json` with endpoints for:
+- Authentication (login/register)
+- Content management
+- Project management
+- User management
+- Categories and subcategories
 
-#### Contenido
-- `GET /content` - Listar contenido
-- `POST /content` - Crear contenido
-- `GET /content/{id}` - Obtener contenido
-- `PATCH /content/{id}` - Actualizar contenido
-- `DELETE /content/{id}` - Eliminar contenido
-
-#### Proyectos
-- `GET /projects` - Listar proyectos
-- `POST /projects` - Crear proyecto
-- `GET /projects/{id}` - Obtener proyecto
-- `PATCH /projects/{id}` - Actualizar proyecto
-- `DELETE /projects/{id}` - Eliminar proyecto
-
-#### Categorías y Subcategorías
-- `GET /categories/public` - Categorías activas
-- `GET /subcategories/public` - Subcategorías activas
-
-#### Estados y Áreas de Proyecto
-- `GET /project-statuses/public` - Estados activos
-- `GET /project-areas/public` - Áreas activas
-
-### TinyMCE
-Para usar el editor de texto enriquecido, necesitas una API key de TinyMCE. Puedes obtener una gratuita en [TinyMCE](https://www.tiny.cloud/).
-
-## 📱 Uso
-
-### Gestión de Contenido
-1. **Navegar a "Contenido"** en el menú principal
-2. **Crear nuevo contenido** con el botón "Nuevo Contenido"
-3. **Completar el formulario** con título, descripción, categoría, etc.
-4. **Usar el editor TinyMCE** para contenido enriquecido
-5. **Guardar y gestionar** el contenido creado
-
-### Gestión de Proyectos
-1. **Navegar a "Proyectos"** en el menú principal
-2. **Crear nuevo proyecto** con el botón "Nuevo Proyecto"
-3. **Completar información** del proyecto:
-   - Título y descripción
-   - Estado y área del proyecto
-   - Objetivos específicos
-   - Conclusión (opcional)
-4. **Usar filtros y búsqueda** para encontrar proyectos
-5. **Gestionar proyectos** existentes
-
-### Gestión de Usuarios (Solo Admins)
-1. **Navegar a "Usuarios"** en el menú principal (solo visible para admins)
-2. **Crear nuevo usuario** con el botón "Nuevo Usuario"
-3. **Completar información** del usuario:
-   - Nombre completo
-   - Email válido
-   - Contraseña segura
-   - Rol (admin o creator)
-4. **Usar filtros y búsqueda** para encontrar usuarios
-5. **Editar o eliminar** usuarios existentes
-6. **Gestionar roles** y permisos de acceso
-
-### Documentación
-1. **Navegar a "Documentación"** en el menú principal
-2. **Explorar contenido** organizado por categorías
-3. **Usar la navegación lateral** para saltar a secciones específicas
-4. **Leer contenido** con formato enriquecido
-
-## 🎨 Características de la UI
-
-### Diseño Responsive
-- **Mobile-first** design
-- **Sidebars fijas** para navegación
-- **Contenedores fluidos** para máximo ancho
-- **Adaptación automática** a diferentes tamaños de pantalla
-
-### Componentes Interactivos
-- **Filtros avanzados** para contenido y proyectos
-- **Búsqueda en tiempo real**
-- **Ordenamiento** por múltiples criterios
-- **Estados de carga** y feedback visual
-- **Confirmaciones** para acciones destructivas
-
-### Editor de Texto Enriquecido
-- **TinyMCE 6** con múltiples plugins
-- **Formato de texto** completo
-- **Inserción de medios** (imágenes, enlaces)
-- **Tablas y listas**
-- **Vista previa** en tiempo real
-
-## 🔒 Seguridad
-
-- **Autenticación JWT** con tokens seguros
-- **Interceptores HTTP** para manejo automático de tokens
-- **Validación de formularios** en frontend y backend
-- **Manejo de errores** robusto
-- **Roles y permisos** basados en usuario
-
-## 📊 Estructura del Proyecto
+## 📁 Project Structure
 
 ```
-src/
-├── components/          # Componentes React
-│   ├── ContentList.tsx  # Lista de contenido
-│   ├── ContentForm.tsx  # Formulario de contenido
-│   ├── ProjectList.tsx  # Lista de proyectos
-│   ├── ProjectForm.tsx  # Formulario de proyectos
-│   ├── Documentation.tsx # Página de documentación
-│   ├── Navigation.tsx   # Navegación principal
-│   ├── Login.tsx        # Página de login
-│   ├── Users.tsx        # Página de gestión de usuarios
-│   ├── UserList.tsx     # Lista de usuarios
-│   ├── UserForm.tsx     # Formulario de usuarios
-│   └── TinyMCE.tsx      # Editor de texto
-├── hooks/               # Custom hooks
-│   ├── useAuth.ts       # Autenticación
-│   ├── useContentManager.ts # Gestión de contenido
-│   ├── useCategories.ts # Categorías
-│   ├── useProjects.ts   # Gestión de proyectos
-│   └── useUsers.ts      # Gestión de usuarios
-├── services/            # Servicios API
-│   ├── api.ts           # API principal
-│   └── projectApi.ts    # API de proyectos
-├── types/               # Tipos TypeScript
-│   └── index.ts         # Definiciones de tipos
-├── config/              # Configuración
-│   └── api.ts           # Configuración de API
-└── App.tsx              # Componente principal
+docucms/
+├── public/                 # Static assets
+├── src/
+│   ├── components/         # React components
+│   │   ├── Content*.tsx    # Content management components
+│   │   ├── Project*.tsx    # Project management components
+│   │   ├── User*.tsx       # User management components
+│   │   └── ...
+│   ├── hooks/              # Custom React hooks
+│   ├── services/           # API services
+│   ├── config/             # Configuration files
+│   ├── types/              # TypeScript type definitions
+│   └── data/               # Mock data (for development)
+├── api-spec-new.json       # API specification
+└── package.json
 ```
 
-## 🚀 Despliegue
+## 🎯 Usage
 
-### Desarrollo
-```bash
-npm run dev
-```
+### Authentication
+1. Navigate to the login page
+2. Enter your credentials
+3. The system will automatically redirect you to the dashboard
 
-### Producción
+### Content Management
+1. **View Content**: Browse all content in the content list
+2. **Create Content**: Click "New Content" to create new content
+3. **Edit Content**: Click the edit button on any content item
+4. **Delete Content**: Use the delete button (with confirmation)
+
+### Project Management
+1. **View Projects**: Navigate to the projects section
+2. **Create Projects**: Use the "New Project" button
+3. **Manage Projects**: Edit, update status, and track progress
+
+### User Management (Admin Only)
+1. **View Users**: Access the users section (admin only)
+2. **Create Users**: Add new users to the system
+3. **Manage Roles**: Assign admin or creator roles
+
+## 🔐 Role-Based Access
+
+### Admin Role
+- Full access to all features
+- User management capabilities
+- Can view and manage all content and projects
+- Category and subcategory management
+
+### Creator Role
+- Content and project creation
+- Edit own content and projects
+- View published content
+- Limited access to system settings
+
+## 🚀 Deployment
+
+### Build for Production
 ```bash
 npm run build
+```
+
+### Preview Production Build
+```bash
 npm run preview
 ```
 
-### Variables de Entorno
-```bash
-# .env.local
-VITE_API_BASE_URL=https://your-api-domain.com/api
-VITE_TINYMCE_API_KEY=your-tinymce-api-key
-```
+### Deploy to Static Hosting
+The built files in the `dist/` directory can be deployed to:
+- Netlify
+- Vercel
+- GitHub Pages
+- Any static hosting service
 
-## 🤝 Contribución
+## 🤝 Contributing
 
-1. Fork el proyecto
-2. Crear una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abrir un Pull Request
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 📄 Licencia
+## 📝 License
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Soporte
+## 👨‍💻 Author
 
-Para soporte técnico o preguntas:
-- Crear un issue en GitHub
-- Contactar al equipo de desarrollo
-- Revisar la documentación de la API
+**Jorge Araiza** - [jaraiza1983](https://github.com/jaraiza1983)
+
+## 🙏 Acknowledgments
+
+- React team for the amazing framework
+- Vite team for the fast build tool
+- Bootstrap team for the UI framework
+- TinyMCE team for the rich text editor
+
+## 📞 Support
+
+If you have any questions or need support, please:
+1. Check the [Issues](https://github.com/jaraiza1983/docucms/issues) page
+2. Create a new issue if your problem isn't already listed
+3. Contact the maintainer
 
 ---
 
-**Desarrollado con ❤️ usando React, TypeScript y Vite**
+**Happy coding! 🎉**
